@@ -1,24 +1,26 @@
 package jp.ac.uryukyu.ie.e185728;
 
 public class Board {
-    private final static int length = 8,
-                empty = 0,
-                brack = 1,
-                white = 2;
+    protected final static int Length = 8,
+                             empty = 0,
+                             black = 1,
+                             white = 2;
+
+    protected static int[][] board   = new int[Length][Length];
 
     public static void initialBoard(){
-        for(int i=0; i<length; i++) {
+        for(int i=0; i<Length; i++) {
             board[i][0] = empty;
             board[0][i] = empty;
         }
         board[3][3] = board[4][4] = white;
-        board[3][4] = board[4][3] = brack;
+        board[3][4] = board[4][3] = black;
     }
 
-    public static void createdBoard(){
-        for(int i=0; i<length; i++) {
-            for (int j = 0; j < length; j++) {
-                switch (board[i][j]) {
+    public static void generateBoard(){
+        for(int i=0; i<Length; i++) {
+            for (int j = 0; j < Length; j++) {
+                switch (board[j][i]) {
                     case empty: {
                         System.out.print("-");
                         break;
@@ -27,7 +29,7 @@ public class Board {
                         System.out.print("◯");
                         break;
                     }
-                    case brack: {
+                    case black: {
                         System.out.print("×");
                     }
                 }
@@ -35,6 +37,6 @@ public class Board {
             }
             System.out.print("\n");
         }
+
     }
-    private static int[][] board   = new int[length][length];
 }
